@@ -1,0 +1,57 @@
+<% include ../partials/header %>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <div class="thumbnail">
+                <img class="img-responsive" src="<%= tales.image %>" style="width:600px;height:600px;">
+                <div class=" caption-full">
+
+                    <h4><a><%=tales.name %></a></h4>
+                    <p><%= tales.description %></p>
+                    <p class="text-right" style="margin: 6px;"><%= moment(tales.createdAt).fromNow() %></p>
+
+                    <% if(currentUser && tales.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin) { %>
+                    <a class="btn btn-warning btn-rounded btn-sm"
+                        href="/category/sackertales/<%= tales._id %>/edit">Edit</a>
+                    <form id="delete-file" action="/category/sackertales/<%= tales._id %>?_method=DELETE" method="POST">
+                        <button class="btn btn-danger btn-rounded btn-sm">Delete</button>
+                    </form>
+                    <%  } %>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="caption-full">
+        <div class="text-right">
+            <a class="btn btn-success btn-rounded" href="/category/sackertales/<%= tales._id%>/comments/new">Add New
+                Comment</a>
+        </div>
+        
+        <% tales.comments.forEach(function(comments){ %>
+
+            <hr id="comm_hr">
+        <strong><%= comments.author.username %></strong>
+        <span class="float-right"><%= moment(comments.createdAt).fromNow() %></span>
+        <br>
+            <%= comments.text %>
+            
+
+        
+        <% if(currentUser && comments.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin) { %>
+        <span class="float-right">
+            <a class="btn btn-warning btn-rounded btn-sm"
+                href="/category/sackertales/<%=tales._id%>/comments/<%=comments._id%>/edit">
+                Edit
+            </a>
+            <form id="delete-file"
+                action="/category/sackertales/<%=tales._id%>/comments/<%=comments._id%>?_method=DELETE" method="POST">
+                <input type="submit" class="btn btn-danger btn-rounded btn-sm" value="Delete"> </form>
+        </span>
+        <%  } %>
+        
+     <%  })  %>
+    </div>
+</div>
+
+<% include ../partials/footer %>

@@ -1,0 +1,120 @@
+<% include ./partials/header %>
+
+
+<!-- Material form register -->
+<div class="form">
+
+    <h5 class="card-header info-color white-text text-center py-4">
+        <strong>Sign Up</strong>
+    </h5>
+
+    <!--Card content-->
+    <div class="card-body px-lg-5 pt-0">
+
+        <!-- Form -->
+        <form action="/register" method="POST" class="text-center" style="color: #757575;" action="#!">
+
+            <!-- <div class="form-row">
+                <div class="col">
+                    
+                    <div class="md-form">
+                        <input type="text" id="materialRegisterFormFirstName" class="form-control">
+                        <label for="materialRegisterFormFirstName">First name</label>
+                    </div>
+                </div>
+                <div class="col">
+                    
+                    <div class="md-form">
+                        <input type="email" id="materialRegisterFormLastName" class="form-control">
+                        <label for="materialRegisterFormLastName">Last name</label>
+                    </div>
+                </div>
+            </div> -->
+
+            <!-- Email -->
+            <div class="md-form mt-5">
+                <input type="email" name="email" id="materialRegisterFormEmail" class="form-control">
+                <label for="materialRegisterFormEmail">Email</label>
+                <small id="materialRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+                    Email cannot be changed
+                </small>
+            </div>
+
+            <!-- Name -->
+            <div class="md-form">
+                <input type="text" name="name" id="materialRegisterFormUserName" class="form-control">
+                <label for="materialRegisterFormUserName">Name</label>
+            </div>
+
+            <!-- Password -->
+            <div class="md-form">
+                <input type="password" name="password" id="materialRegisterFormPassword" class="form-control"
+                    aria-describedby="materialRegisterFormPasswordHelpBlock">
+                <label for="materialRegisterFormPassword">Password</label>
+                <small id="materialRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+                    At least 8 characters and 1 digit
+                </small>
+            </div>
+
+            <!-- Phone number -->
+            <div class="md-form">
+                <input type="text" id="materialRegisterFormPhone" class="form-control"
+                    aria-describedby="materialRegisterFormPhoneHelpBlock">
+                <label for="materialRegisterFormPhone">Phone number</label>
+                <small id="materialRegisterFormPhoneHelpBlock" class="form-text text-muted mb-4">
+                    Optional - for two step authentication
+                </small>
+            </div>
+
+            <!-- Newsletter -->
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="materialRegisterFormNewsletter">
+                <label class="form-check-label" for="materialRegisterFormNewsletter">Subscribe to our newsletter</label>
+            </div>
+
+            <!-- Admin Code -->
+            <div class="md-form mt-0">
+                <input type="text" name="adminCode" id="materialRegisterFormAdminCode" class="form-control">
+                <label for="materialRegisterFormAdminCode">Admin Code</label>
+                <small id="materialRegisterFormAdminCode" class="form-text text-muted mb-4">
+                    Only Admins have this Code
+                </small>
+            </div>
+
+            <!-- Sign up button -->
+            <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">Sign
+                Up</button>
+
+            <!-- Social register -->
+            <p>or sign up with:</p>
+
+            <a type="button" class="btn-floating btn-fb btn-sm">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a type="button" class="btn-floating btn-tw btn-sm">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a type="button" class="btn-floating btn-li btn-sm">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a type="button" class="btn-floating btn-git btn-sm">
+                <i class="fab fa-github"></i>
+            </a>
+
+            <hr>
+
+            <!-- Terms of service -->
+            <p>By clicking
+                <em>Sign up</em> you agree to our
+                <a href="" target="_blank">terms of service</a>
+
+        </form>
+        <!-- Form -->
+
+    </div>
+
+</div>
+<!-- Material form register -->
+
+
+<% include ./partials/footer %>

@@ -1,0 +1,50 @@
+<% include ./partials/header %>
+
+<!-- Material form login -->
+<div class="form">
+
+    <h5 class="card-header info-color white-text text-center py-4">
+        <strong>Reset Your Password</strong>
+    </h5>
+
+    <!--Card content-->
+    <div class="card-body px-lg-5 pt-0">
+
+        <!-- Form -->
+        <form action="/reset/<%= token %>" method="POST" class="text-center" style="color: #757575;">
+
+            <!-- Name
+            <div class="md-form">
+                <input type="text" name="name" id="materialRegisterFormUserName" class="form-control">
+                <label for="materialRegisterFormUserName">Name</label>
+            </div> -->
+            <!-- Password -->
+            <div class="md-form">
+                <input type="password" name="password" id="materialLoginFormPassword" class="form-control">
+                <label for="materialLoginFormPassword">New Password</label>
+            </div>
+
+            <!-- Password -->
+            <div class="md-form">
+                <input type="password" name="confirm" id="materialLoginFormConfPassword" class="form-control">
+                <label for="materialLoginFormConfPassword">Confirm Password</label>
+            </div>
+
+            
+
+            <!-- Sign in button -->
+            <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">Reset Password</button>
+
+           
+
+            
+
+        </form>
+        <!-- Form -->
+
+    </div>
+
+</div>
+<!-- Material form login -->
+
+<% include ./partials/footer %>

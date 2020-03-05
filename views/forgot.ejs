@@ -1,0 +1,18 @@
+<% include ./partials/header %>
+<div class="container">
+    <div>
+        <h1 style="text-align:center;">Enter Your Email</h1>
+        <div style="width: 30%; margin:25px auto;">
+            <form action="/forgot" method="POST">
+                <div class="form-group">
+                    <input class="form-control" type="email" name="email" placeholder="Email">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-lg btn-primary btn-block">Send Email!</button>
+                </div>
+            </form>
+            <a href="/category/sackertales">Go Back</a>
+        </div>
+    </div>
+</div>
+<% include ./partials/footer %>

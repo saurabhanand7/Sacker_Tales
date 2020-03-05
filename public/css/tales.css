@@ -1,0 +1,64 @@
+html,
+body {
+	height: 100%;
+	min-height: 100%;
+	overflow: auto;
+}
+
+#body {
+	min-height: 100%;
+	position: relative;
+}
+#main-content {
+	overflow: auto;
+	padding-bottom:100px;
+}
+
+
+body div div div div a img {
+	width: 100%;
+}
+.img-thumbnail{
+    margin-bottom: 8%;
+}
+#comm_hr{
+	margin-top: 1.5rem;
+}
+.jumbotron-fluid{
+    background-color:#040d20;
+    color:white;
+    padding-left: 5%;
+    margin-top: 20px;
+}
+.navbar{
+    background-color: #040d20;
+    color: rgb(131, 134, 118);
+    
+}
+
+.navbar .nav-item.avatar .dropdown-toggle img {
+	height: 2.5rem;
+	width: auto;
+}
+
+body{
+    background-color:#4B515D;
+}
+.navbar-brand{
+    color:white;
+}
+.form {
+    margin: 2% 22% 0 22%;
+    background-color: azure;
+}
+
+#delete-file {
+	display: inline;
+}
+
+footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	padding-top: 300px;
+}

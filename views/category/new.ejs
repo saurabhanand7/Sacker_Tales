@@ -1,0 +1,85 @@
+<% include ../partials/header %>
+
+<!-- Material form contact -->
+<div class="form">
+
+    <h5 class="card-header info-color white-text text-center py-4">
+        <strong>Add New File</strong>
+    </h5>
+
+    <!--Card content-->
+    <div class="card-body px-lg-5 pt-0">
+
+        <!-- Form -->
+        <form action="/category/sackertales" method="POST" class="text-center md-form" style="color: #757575;"
+            enctype="multipart/form-data">
+
+            <!-- Name -->
+            <div class="md-form mt-4">
+                <input type="text" name="name" id="materialContactFormName" class="form-control">
+                <label for="materialContactFormName">Name</label>
+            </div>
+
+            <!-- Image -->
+
+            <!-- <div class="md-form mt-3">
+                <input type="file" name="imgName" class="form-control">
+                <label for="materialContactFormName"></label>
+            </div> -->
+
+
+            <!-- <div class="file-upload-wrapper">
+                <input type="file" id="input-file-now" class="file-upload" />
+              </div> -->
+
+
+            <div class="file-field md-form mt-3">
+                <div class="btn btn-primary btn-sm float-left">
+                    <span>Choose file</span>
+                    <input type="file" name="imgName" class="form-control">
+                </div>
+                <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text" placeholder="Upload your file">
+                </div>
+            </div>
+
+
+
+
+            <!-- Subject
+            <span>Subject</span>
+            <select class="mdb-select">
+                <option value="" disabled>Choose option</option>
+                <option value="1" selected>Feedback</option>
+                <option value="2">Report a bug</option>
+                <option value="3">Feature request</option>
+                <option value="4">Feature request</option>
+            </select> -->
+
+            <!--Message-->
+            <div class="md-form">
+                <input type="text" name="description" id="materialContactFormMessage" class="form-control">
+                <label for="materialContactFormMessage">Description</label>
+            </div>
+
+            <!-- Copy
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="materialContactFormCopy">
+                <label class="form-check-label" for="materialContactFormCopy">Send me a copy of this message</label>
+            </div> -->
+
+            <!-- Send button -->
+            <button class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect"
+                type="submit">Submit</button>
+
+        </form>
+        <!-- Form -->
+        <a href="/category/sackertales">Go Back</a>
+    </div>
+
+</div>
+<!-- Material form contact -->
+
+
+
+<% include ../partials/footer %>

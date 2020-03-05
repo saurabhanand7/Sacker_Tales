@@ -1,0 +1,35 @@
+<% include ../partials/header %>
+<div class="container">
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h2 class="display-4 animated zoominRight">Sacker Tales</h2>
+      <p class="lead animated zoominRight delay-1s">Ye Duniya aapke kaam ko nhi aapke kaand ko yaad rakhegi !</p>
+    </div>
+    <% if(currentUser && currentUser.isAdmin) { %>
+    <a class="btn btn-primary" href="/category/sackertales/new">Add New Tale</a>
+    <%  } %>
+  </div>
+
+
+
+
+
+  <div class="row ">
+      <% tales.forEach(function(tales){ %>
+    <div class="col-lg-4 col-sm-6">
+      <div class="img-thumbnail ">
+        <a href="/category/sackertales/<%= tales._id %>"
+          data-size="1600x1067">
+          <img src="<%= tales.image %>" style="width:px;height:px;">
+        </a>
+      </div>
+    </div>
+    <% }) %>
+    
+
+
+  </div>
+
+</div>
+
+<% include ../partials/footer %>
