@@ -8,9 +8,11 @@ router.get("/category/sackertales/:id/comments/new", middleware.isLoggedIn, func
     tales.findById(req.params.id, function (err, tales) {
         if (err) {
             console.log(err);
+            next(err);
         } else {
             res.render("comments/new", {
-                tales: tales
+                tales: tales,
+                title: "New Comment" 
             });
         }
     });
@@ -48,7 +50,8 @@ router.get("/category/sackertales/:id/comments/:comments_id/edit", middleware.ch
         } else {
             res.render("comments/edit", {
                 tales_id: req.params.id,
-                comments: foundComments
+                comments: foundComments,
+                title: "Edit Comment"
             });
         }
     });

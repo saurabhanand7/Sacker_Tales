@@ -13,7 +13,9 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 
 router.get("/register", function (req, res) {
-    res.render("register");
+    res.render("register", {
+        title: "Sign Up Page"
+    });
 });
 
 router.post("/register", function (req, res) {
@@ -38,7 +40,9 @@ router.post("/register", function (req, res) {
 });
 
 router.get("/login", function (req, res) {
-    res.render("login");
+    res.render("login", {
+        title: "Login Page"
+    });
 });
 
 router.post(
@@ -61,7 +65,9 @@ router.get("/logout", function (req, res) {
 
 // forgot password
 router.get('/forgot', function (req, res) {
-    res.render('forgot');
+    res.render('forgot', {
+        title: "Forgot password"
+    });
 });
 
 router.post('/forgot', function (req, res, next) {
@@ -195,7 +201,8 @@ router.get('/reset/:token', function (req, res) {
             return res.redirect('/forgot');
         }
         res.render('reset', {
-            token: req.params.token
+            token: req.params.token,
+            title: "Reset Password"
         });
     });
 });

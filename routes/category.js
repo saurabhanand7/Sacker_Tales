@@ -33,9 +33,11 @@ router.get("/", function (req, res) {
     tales.find({}, function (err, alltales) {
         if (err) {
             console.log(err);
+            next(err);
         } else {
             res.render("category/sackertales", {
-                tales: alltales
+                tales: alltales,
+                title: "Welcome To Sacker Tales !" 
             });
         }
     });
@@ -87,19 +89,21 @@ router.post("/category/sackertales", middleware.isLoggedIn, upload.single('imgNa
 
 
 router.get("/category/sackertales/new", middleware.isLoggedIn, function (req, res) {
-    res.render("./category/new");
+    res.render("./category/new",
+    {title: "Add New Tale !" });
 });
 
-router.get("/category/sackertales/:id", function (req, res) {
+router.get("/category/sackertales/:id", function (req, res, next) {
     tales
         .findById(req.params.id)
         .populate("comments")
         .exec(function (err, foundtales) {
             if (err) {
-                console.log(err);
+                next(err);
             } else {
                 res.render("./category/show", {
-                    tales: foundtales
+                    tales: foundtales,
+                    title: "Welcome To Sacker Tales !" 
                 });
             }
         });
@@ -111,7 +115,8 @@ router.get("/category/sackertales/:id/edit", middleware.checkOwnership, function
             res.render("back");
         } else {
             res.render("category/edit", {
-                tales: foundtales
+                tales: foundtales,
+                title: "Edit Tale !" 
             });
         }
 
@@ -138,6 +143,7 @@ router.put("/category/sackertales/:id", middleware.checkOwnership, upload.single
     }
     tales.findByIdAndUpdate(req.params.id, data, function (err, updatedFile) {
         if (err) {
+            req.flash("error", err.message);
             res.redirect("/");
         } else {
             req.flash("success", "Tale Edited !");

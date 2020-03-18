@@ -5,7 +5,8 @@ var middlewareObj = {};
 middlewareObj.checkOwnership = function (req, res, next) {
     if (req.isAuthenticated()) {
         tales.findById(req.params.id, function (err, foundtales) {
-            if (err) {
+            if (err || !foundtales) {
+                req.flash("error", "Tale not Found !");
                 res.redirect("back");
             } else {
                 if (foundtales.author.id.equals(req.user._id) || req.user.isAdmin) {

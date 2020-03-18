@@ -34,7 +34,7 @@ app.use(
 );
 app.use(methodOverride("_method"));
 app.set("view engine", "ejs");
-
+app.locals.rmWhitespace = true;
 mongoose.set("useFindAndModify", false);
 mongoose.set("useCreateIndex", true);
 
@@ -78,6 +78,17 @@ app.use((req, res, next) => {
 app.use(indexRoutes);
 app.use(categoryRoutes);
 app.use(commentsRoutes);
+
+
+app.use((req, res, next) => {
+	res.status(404).render("404", { title: "404: Page not found!" });
+});
+app.use((err, req, res, next) => {
+	res.status(err.status || 500).render("500", {
+		title: (err.status || 500) + ": encountered an error",
+		err: err
+	});
+});
 
 
 app.listen(3000 || process.env.PORT, process.env.IP, function () {
