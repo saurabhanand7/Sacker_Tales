@@ -26,8 +26,8 @@ middlewareObj.checkOwnership = function (req, res, next) {
 middlewareObj.checkCommOwnership = function (req, res, next) {
     if (req.isAuthenticated()) {
         comments.findById(req.params.comments_id, function (err, foundComments) {
-            if (err) {
-                req.flash("error", "Tale Not Found !");
+            if (err || !foundComments) {
+                req.flash("error", "Comment Not Found !");
                 res.redirect("back");
             } else {
                 if (foundComments.author.id.equals(req.user._id) || req.user.isAdmin) {
