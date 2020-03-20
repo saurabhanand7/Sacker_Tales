@@ -84,6 +84,7 @@ app.use((req, res, next) => {
 	res.status(404).render("404", { title: "404: Page not found!" });
 });
 app.use((err, req, res, next) => {
+  console.log(err);
 	res.status(err.status || 500).render("500", {
 		title: (err.status || 500) + ": encountered an error",
 		err: err
@@ -91,6 +92,6 @@ app.use((err, req, res, next) => {
 });
 
 
-app.listen(process.env.PORT, process.env.IP, function () {
+app.listen(3000 || process.env.PORT, process.env.IP, function () {
   console.log("Tales server has Started !");
 });

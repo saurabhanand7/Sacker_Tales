@@ -15,7 +15,7 @@
             style="color: #757575;" enctype="multipart/form-data">
 
             <!-- Name -->
-            <div class="md-form mt-4">
+            <div class="md-form mt-5">
                 <input type="text" name="name" value="<%= tales.name %>" id="materialContactFormName"
                     class="form-control">
                 <label for="materialContactFormName">Name</label>
@@ -23,7 +23,7 @@
 
             <!-- Image -->
 
-            <div class="file-field md-form mt-3">
+            <!-- <div class="file-field md-form mt-3">
                 <div class="btn btn-primary btn-sm float-left">
                     <span>Choose file</span>
                     <input type="file" name="imgName" value="<%= tales.image %>" class="form-control">
@@ -31,7 +31,17 @@
                 <div class="file-path-wrapper">
                     <input class="file-path validate" type="text" placeholder="<%= tales.image %>">
                 </div>
-            </div>
+            </div> -->
+
+            <div class="input-group mb-5">
+                
+                <div class="custom-file">
+                  <input type="file" name="imgName" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                  <label class="custom-file-label" for="inputGroupFile01"><%= tales.image %></label>
+                </div>
+              </div>
+
+
             <!-- <div class="md-form mt-3">
                 <input type="file" name="imgName" id="materialContactFormName" class="form-control">
                 <label for="materialContactFormName"></label>

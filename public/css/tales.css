@@ -22,7 +22,9 @@ body div div div div a img {
     margin-bottom: 8%;
 }
 #comm_hr{
-	margin-top: 1.5rem;
+	margin-top: 3.3rem;
+	
+  
 }
 .jumbotron-fluid{
     background-color:#040d20;
@@ -35,9 +37,13 @@ body div div div div a img {
     color: rgb(131, 134, 118);
     
 }
-
+.ptop{
+	padding-top: 8px;
+}
 .navbar .nav-item.avatar .dropdown-toggle img {
-	height: 2.5rem;
+	margin-top: 0.4rem;
+	margin-bottom: 0.4rem;
+	height: 1.7rem;
 	width: auto;
 }
 

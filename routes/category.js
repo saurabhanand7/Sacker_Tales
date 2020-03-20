@@ -4,6 +4,7 @@ const router = express.Router();
 const multer = require("multer");
 const tales = require("../models/tales");
 const middleware = require("../middleware");
+const createError = require("http-errors");
 
 const storage = multer.diskStorage({
     filename: (req, file, cb) => {
@@ -98,12 +99,18 @@ router.get("/category/sackertales/:id", function (req, res, next) {
         .findById(req.params.id)
         .populate("comments")
         .exec(function (err, foundtales) {
-            if (err) {
-                next(err);
+            if (err || !foundtales) {
+                next(createError(404));
             } else {
+                 var totalRating = 0 ;
+                 foundtales.comments.forEach(function(comments){ 
+                     totalRating = ( totalRating + comments.rating); 
+                      }), 
                 res.render("./category/show", {
                     tales: foundtales,
-                    title: "Welcome To Sacker Tales !" 
+                    title: "Welcome To Sacker Tales !",
+                    totalRating: totalRating
+                    
                 });
             }
         });

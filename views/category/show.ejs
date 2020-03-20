@@ -8,8 +8,33 @@
 
                     <h4><a><%=tales.name %></a></h4>
                     <p><%= tales.description %></p>
-                    <p class="text-right" style="margin: 6px;"><%= moment(tales.createdAt).fromNow() %></p>
+                    <p class="text-right" style="margin: 2px;"><%= moment(tales.createdAt).fromNow() %></p>
 
+                    <% if(tales.comments) { %>
+                    <div style="display: inline-block; float: right;">
+                        <div id="<%= 'rateYo' + tales._id %>" style="display: inline-block;"></div>
+                        <div class="text-small" style="display: inline-block;"> <strong>
+                                <%= Math.round((totalRating / tales.comments.length) * 10) / 10 %> </strong>
+                            (<%= tales.comments.length %>
+                            reviews)</div>
+                    </div>
+                    <script>
+                        $(function () {
+                            $("<%= '#rateYo' + tales._id %>").rateYo({
+                                starWidth: "20px",
+                                multiColor: {
+                                    "startColor": "#FF0000", //RED
+                                    "endColor": "#00FF00" //GREEN
+                                },
+                                rating: <%= (totalRating / tales.comments.length) %> ,
+                                readOnly: true
+                            });
+                        });
+                    </script>
+                    <% } else {%>
+                    <em class="text-small">No Reviews Yet !</em>
+                    <% } %>
+                    <br>
                     <% if(currentUser && tales.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin) { %>
                     <a class="btn btn-warning btn-rounded btn-sm"
                         href="/category/sackertales/<%= tales._id %>/edit">Edit</a>
@@ -24,20 +49,32 @@
     </div>
     <div class="caption-full">
         <div class="text-right">
-            <a class="btn btn-success btn-rounded" href="/category/sackertales/<%= tales._id%>/comments/new">Add New
+            <a class="btn btn-success" href="/category/sackertales/<%= tales._id%>/comments/new">Add New
                 Comment</a>
         </div>
-        
-        <% tales.comments.forEach(function(comments){ %>
 
-            <hr id="comm_hr">
-        <strong><%= comments.author.username %></strong>
+        <% tales.comments.forEach(function(comments){ %>
+        <hr id="comm_hr">
+        <strong><%= comments.author.name %></strong>
         <span class="float-right"><%= moment(comments.createdAt).fromNow() %></span>
         <br>
-            <%= comments.text %>
-            
+        <%= comments.text %>
 
-        
+        <div id="<%= 'rateYo' + tales._id + comments._id %>"></div>
+        <script>
+            $(function () {
+                $("<%= '#rateYo' + tales._id + comments._id %>").rateYo({
+                    starWidth: "20px",
+                    multiColor: {
+                        "startColor": "#FF0000", //RED
+                        "endColor": "#00FF00" //GREEN
+                    },
+                    rating: <%= comments.rating %> ,
+                    readOnly: true
+                });
+            });
+        </script>
+
         <% if(currentUser && comments.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin) { %>
         <span class="float-right">
             <a class="btn btn-warning btn-rounded btn-sm"
@@ -49,8 +86,9 @@
                 <input type="submit" class="btn btn-danger btn-rounded btn-sm" value="Delete"> </form>
         </span>
         <%  } %>
-        
-     <%  })  %>
+
+        <%  })  %>
+
     </div>
 </div>
 

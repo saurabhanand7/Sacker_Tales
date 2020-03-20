@@ -1,11 +1,22 @@
 <% include ../partials/header %>
+
+
+
 <div class="container">
+
     <div>
         <h1 style="text-align:center;">Edit Comment !</h1>
         <div style="width: 30%; margin:25px auto;">
             <form action="/category/sackertales/<%= tales_id %>/comments/<%= comments._id %>?_method=PUT" method="POST">
                 <div class="form-group">
-                    <input class="form-control" type="text" name="comments[text]" value="<%=comments.text%>">
+                    <input class="form-control" type="text" name="comments[text]" value="<%= comments.text %>">
+                </div>
+                <div class="form-group">
+                
+                <div id="rateYo"></div>
+                <!-- <div class="counter"><%= comments.rating %></div> -->
+                <input autocomplete="off" type="hidden" name="comments[rating]" id="rating" value="<%= comments.rating %>">
+            
                 </div>
                 <div class="form-group">
                     <button class="btn btn-lg btn-primary btn-block">Submit!</button>
@@ -15,4 +26,38 @@
         </div>
     </div>
 </div>
+
+<script>
+    $("#rateYo").rateYo({
+    
+        rating: "<%= comments.rating %>",
+        spacing   : "5px",
+        halfStar: false,
+        starWidth: "35px",
+        multiColor: {
+        
+            "startColor": "#FF0000", //RED
+            "endColor"  : "#00FF00"  //GREEN
+        },
+        onChange: function (rating, rateYoInstance) {
+            $(this).next().text(rating);
+            $("input[type='hidden']").attr("value", rating);
+        }
+    });
+    $("form").on("submit", function(evt) {
+        var valueOfInput = $("input[type='hidden']").val();
+        if(valueOfInput < 1 || valueOfInput > 5) {
+            evt.preventDefault();
+        var divInvalidRating = document.getElementById("invalidRating");
+        if(divInvalidRating) 
+            divInvalidRating.remove();
+        divInvalidRating = document.createElement("div");
+        divInvalidRating.innerHTML = "Please give a rating (range: 1 - 5)!";
+        divInvalidRating.className = "text-danger";
+        divInvalidRating.setAttribute("id", "invalidRating");
+        document.querySelector("#rateYo").parentElement.insertBefore(divInvalidRating, document.querySelector("#rateYo"));
+        document.querySelector("#rateYo").parentElement.scrollIntoView();
+        }
+    });
+</script>
 <% include ../partials/footer %>

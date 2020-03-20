@@ -28,11 +28,14 @@ router.post("/category/sackertales/:id/comments", middleware.isLoggedIn, functio
             comments.create(req.body.comments, function (err, comments) {
                 if (err) {
                     console.log(err);
+                    req.flash("error", "Error Adding Comment !");
                 } else {
                     comments.author.id = req.user._id;
-                    comments.author.username = req.user.username;
+                    comments.author.name = req.user.name;
                     comments.save();
+                    
                     tales.comments.push(comments);
+                    
                     tales.save();
                     req.flash("success", "Comment Added !");
                     res.redirect("/category/sackertales/" + tales._id);
@@ -57,9 +60,11 @@ router.get("/category/sackertales/:id/comments/:comments_id/edit", middleware.ch
     });
 });
 
-router.put("/category/sackertales/:id/comments/:comments_id", middleware.checkCommOwnership, function (req, res) {
+router.put("/category/sackertales/:id/comments/:comments_id", middleware.checkCommOwnership,
+ function (req, res) {
     comments.findByIdAndUpdate(req.params.comments_id, req.body.comments, function (err, updatedFile) {
         if (err) {
+            console.log(error);
             req.flash("error", "Comment Not Found !");
             res.redirect("back");
         } else {
@@ -68,6 +73,8 @@ router.put("/category/sackertales/:id/comments/:comments_id", middleware.checkCo
         }
     });
 });
+
+
 
 router.delete("/category/sackertales/:id/comments/:comments_id", middleware.checkCommOwnership, function (req, res) {
     comments.findByIdAndRemove(req.params.comments_id, function (err) {
