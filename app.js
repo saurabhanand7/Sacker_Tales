@@ -92,6 +92,6 @@ app.use((err, req, res, next) => {
 });
 
 
-app.listen(3000 || process.env.PORT, process.env.IP, function () {
+app.listen(process.env.PORT, process.env.IP, function () {
   console.log("Tales server has Started !");
 });
