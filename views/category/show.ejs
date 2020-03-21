@@ -8,12 +8,12 @@
 
                     <h4><a><%=tales.name %></a></h4>
                     <p><%= tales.description %></p>
-                    <p class="text-right" style="margin: 2px;"><%= moment(tales.createdAt).fromNow() %></p>
+                    <p class="text-right dateMargin"><%= moment(tales.createdAt).fromNow() %></p>
 
                     <% if(tales.comments.length !== 0) { %>
                     <div style="display: inline-block; float: right;">
-                        <div id="<%= 'rateYo' + tales._id %>" style="display: inline-block;"></div>
-                        <div class="text-small" style="display: inline-block;"> <strong>
+                        <div class="dateMargin" id="<%= 'rateYo' + tales._id %>" style="display: inline-block;"></div>
+                        <div class="text-small dateMargin" style="display: inline-block;"> <strong>
                                 <%= Math.round((totalRating / tales.comments.length) * 10) / 10 %> </strong>
                             (<%= tales.comments.length %>
                             reviews)</div>
@@ -33,7 +33,7 @@
                     </script>
                     <% } else {%>
                         <div style="display: inline-block; float: right;">
-                    <div class="text-small" style="display: inline-block;">No Reviews Yet !</div>
+                    <div class="text-small dateMargin" style="display: inline-block;">No Reviews Yet !</div>
                 </div>
                     <% } %>
                     <br>
@@ -51,7 +51,7 @@
     </div>
     <div class="caption-full">
         <div class="text-right">
-            <a class="btn btn-success" href="/category/sackertales/<%= tales._id%>/comments/new">Add New
+            <a class="btn btn-success mt-4" href="/category/sackertales/<%= tales._id%>/comments/new">Add New
                 Comment</a>
         </div>
 

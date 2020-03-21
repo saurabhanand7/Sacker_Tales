@@ -21,6 +21,10 @@ body div div div div a img {
 .img-thumbnail{
     margin-bottom: 8%;
 }
+
+.dateMargin{
+	margin-right: 1rem;
+}
 #comm_hr{
 	margin-top: 3.3rem;
 	
